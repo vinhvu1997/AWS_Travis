@@ -2,10 +2,13 @@ language: go
 go: 
 - 1.5.1
 - release
+stages:
+- compile
+- test
 jobs:
-  - stage: Compile
+  - stage: compile
     script:
     - go install
-  - stage: Test
+  - stage: test
     script:
     - go test -v -race -cover
