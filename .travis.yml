@@ -3,11 +3,15 @@ go:
 - 1.5.1
 - release
 stages:
+- install
 - compile
 - test
 - log
 jobs:
   include:
+    - stage: install
+      script:
+      - gem install travis -v 1.8.8 --no-rdoc --no-ri
     - stage: compile
       script:
       - go install
