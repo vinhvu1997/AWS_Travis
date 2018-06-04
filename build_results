@@ -1,0 +1,15 @@
+Build #4:  .org test
+State:         passed
+Type:          push
+Branch:        master
+Compare URL:   https://github.com/vinhvu1997/AWS_Travis/compare/7c8e654202a3...b64c9232e9f0
+Duration:      4 min 43 sec
+Started:       2018-06-04 10:11:17
+Finished:      2018-06-04 10:13:54
+
+#4.1 passed:     24 sec         os: linux
+#4.2 passed:     26 sec         os: linux
+#4.3 passed:     35 sec         os: linux
+#4.4 passed:     42 sec         os: linux
+#4.5 passed:     2 min 36 sec   os: linux
+passed

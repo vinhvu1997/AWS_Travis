@@ -6,5 +6,5 @@ go:
 - release
 - tip
 script:
-- go test -v
+- go test -v -race -cover
 
