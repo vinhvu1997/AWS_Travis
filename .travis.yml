@@ -6,9 +6,10 @@ stages:
 - compile
 - test
 jobs:
-  - stage: compile
-    script:
-    - go install
-  - stage: test
-    script:
-    - go test -v -race -cover
+  include:
+    - stage: compile
+      script:
+      - go install
+    - stage: test
+      script:
+      - go test -v -race -cover
