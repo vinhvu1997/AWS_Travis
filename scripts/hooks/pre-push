@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
-
-echo -e "\n***************\nRunning pre-push hook"
+trav_stat=$(travis status)
+trav_show=$(travis show)
+echo -e "\n***************\nRunning post-push hook"
 cd $GOPATH/src/Travis
 go test
 echo -e "***************\n"
-# $? stores exit value of the last command
-if [ $? -ne 0 ]; then
- echo "Tests must pass before commit!"
- exit 1
+
+if [[ $trav_stat != "started" ]]; then
+	$trav_show
+	echo success
 fi
+
+echo done.
