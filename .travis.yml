@@ -5,6 +5,7 @@ go:
 stages:
 - compile
 - test
+- log
 jobs:
   include:
     - stage: compile
@@ -13,3 +14,6 @@ jobs:
     - stage: test
       script:
       - go test -v -race -cover
+    - stage: log
+      script:
+      - travis show > build_results
