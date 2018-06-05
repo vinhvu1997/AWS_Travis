@@ -2,12 +2,12 @@
 trav_stat=$(travis status)
 trav_show=$(travis show)
 echo -e "\n***************\nRunning post-push hook"
-cd $GOPATH/src/Travis
+cd $GOPATH/src/AWS_Travis
 go test
 echo -e "***************\n"
 
 if [[ $trav_stat != "started" ]]; then
-	$trav_show
+	travis show > build_results
 	echo success
 fi
 
