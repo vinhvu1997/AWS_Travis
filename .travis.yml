@@ -6,19 +6,25 @@ go:
 - release
 
 stages:
-- install
+#- install
 - compile
 - test
 - log
-
+before_install:
+- docker build -t tc/golang-1.9     
+- docker run -d -p 127.0.0.1:80:4567 carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec foreman start;"
+- docker ps -a
+- docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test"
+script:
+-bundle exec rake test
 jobs:
   include:
-    - stage: install
-      script:
-	- docker build -t tc/golang-1.9     
-	- docker run -d -p 127.0.0.1:80:4567 carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec foreman start;"
-	- docker ps -a
-	- docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test" 
+#    - stage: install
+ #     script:
+#	- docker build -t tc/golang-1.9     
+#	- docker run -d -p 127.0.0.1:80:4567 carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec foreman start;"
+#	- docker ps -a
+#	- docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test" 
     - stage: compile
       script:
       - go install
